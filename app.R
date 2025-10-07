@@ -5,9 +5,9 @@
 # Find out more about building applications with Shiny here:
 #
 #    https://shiny.posit.co/
-require(shiny)
-require(soiltexture)
-require(shinythemes)
+library(shiny)
+library(soiltexture)
+library(shinythemes)
 # Define UI for application that draws a histogram
 ui <- fluidPage(
   theme = shinythemes::shinytheme("superhero")
@@ -175,4 +175,5 @@ server <- function(input, output) {
 
 # Run the application 
 shinyApp(ui = ui, server = server)
+
 
