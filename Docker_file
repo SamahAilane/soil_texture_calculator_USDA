@@ -20,5 +20,4 @@ COPY app.R /srv/shiny-server/
 # Set the port to be 3838, which is the default for shiny-server
 EXPOSE 3838
 
-# No need for a CMD as the rocker/shiny base image already sets up shiny-server
-# to run on startup, looking for apps in /srv/shiny-server/. 
+
