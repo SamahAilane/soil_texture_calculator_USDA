@@ -1,0 +1,24 @@
+# Start with a base R image suitable for Shiny apps
+FROM rocker/shiny:4.4.1
+
+# Install system dependencies needed for R packages
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    libxml2-dev \
+    libssl-dev \
+    libcurl4-openssl-dev \
+    # Clean up
+    && rm -rf /var/lib/apt/lists/*
+
+# Install R packages from CRAN
+# The packages from your script: shiny, soiltexture, shinythemes
+RUN R -e "install.packages(c('shiny', 'soiltexture', 'shinythemes'), repos='https://cran.rstudio.com/')"
+
+# Copy the application file into the app directory
+COPY app.R /srv/shiny-server/
+
+# Set the port to be 3838, which is the default for shiny-server
+EXPOSE 3838
+
+# No need for a CMD as the rocker/shiny base image already sets up shiny-server
+# to run on startup, looking for apps in /srv/shiny-server/. 
