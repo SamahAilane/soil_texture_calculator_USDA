@@ -5,7 +5,6 @@
 # Find out more about building applications with Shiny here:
 #
 #    https://shiny.posit.co/
-install.packages(c("shiny", "soiltexture", "shinythemes"))
 require(shiny)
 require(soiltexture)
 require(shinythemes)
@@ -176,3 +175,4 @@ server <- function(input, output) {
 
 # Run the application 
 shinyApp(ui = ui, server = server)
+
